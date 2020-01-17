@@ -38,10 +38,27 @@ function home() {
     console.log(weather.list[0]);
   };
   console.log(currentWeather);
+  const lat = _ => {
+    if (currentWeather.coord.lat) {
+      return <p>currentWeather.coord.lat</p>;
+    } else {
+      return <></>;
+    }
+  };
   return (
     <div>
       <h1>{currentWeather.name}</h1>
-      <h1>{currentWeather.coord.lat}</h1>
+      {typeof currentWeather.coord === "undefined" ? (
+        <></>
+      ) : (
+        <h1>
+          {Math.round(
+            ((Number(currentWeather.main.temp) - 273.15) * 9) / 5 + 32
+          )}{" "}
+          F
+        </h1>
+      )}
+      {/* <h1>{currentWeather.coord.lat}</h1> */}
 
       {/* <h2>{weather.main.temp}</h2> */}
       {/* <h3>{weather.list[0].main}</h3>  */}
